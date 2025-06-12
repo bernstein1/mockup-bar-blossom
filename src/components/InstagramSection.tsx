@@ -5,10 +5,11 @@ import { Instagram } from 'lucide-react';
 
 interface InstagramPost {
   id: string;
-  media_type: string;
+  media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM';
   media_url: string;
   permalink: string;
   caption?: string;
+  thumbnail_url?: string;
 }
 
 const InstagramSection = () => {
@@ -16,7 +17,7 @@ const InstagramSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fallback images in case Instagram API is not configured
+  // Fallback images in case Instagram API fails
   const fallbackImages = [
     '/lovable-uploads/05b8a751-a6ac-486c-9bd4-6ae70ab8a119.png',
     '/lovable-uploads/502499cf-340b-4a8b-b1e1-887ba25bbb02.png',
@@ -31,13 +32,47 @@ const InstagramSection = () => {
   useEffect(() => {
     const fetchInstagramPosts = async () => {
       try {
-        // You'll need to set up Instagram Basic Display API
-        // For now, we'll use fallback images
-        console.log('Instagram API not configured, using fallback images');
-        setLoading(false);
+        // Check if we have an access token in localStorage
+        const accessToken = localStorage.getItem('instagram_access_token');
+        
+        if (!accessToken) {
+          console.log('No Instagram access token found. Please authenticate first.');
+          setError('Instagram not connected. Using sample images.');
+          setLoading(false);
+          return;
+        }
+
+        // Fetch user's media from Instagram Basic Display API
+        const response = await fetch(
+          `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,caption,thumbnail_url&access_token=${accessToken}`
+        );
+
+        if (!response.ok) {
+          throw new Error(`Instagram API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+
+        // Filter for images and videos, limit to 8 posts
+        const mediaPosts = data.data
+          .filter((post: InstagramPost) => 
+            post.media_type === 'IMAGE' || 
+            post.media_type === 'VIDEO' || 
+            post.media_type === 'CAROUSEL_ALBUM'
+          )
+          .slice(0, 8);
+
+        setPosts(mediaPosts);
+        console.log('Successfully fetched Instagram posts:', mediaPosts.length);
+        
       } catch (err) {
         console.error('Error fetching Instagram posts:', err);
-        setError('Failed to load Instagram posts');
+        setError('Failed to load Instagram posts. Using sample images.');
+      } finally {
         setLoading(false);
       }
     };
@@ -45,7 +80,24 @@ const InstagramSection = () => {
     fetchInstagramPosts();
   }, []);
 
-  const displayImages = posts.length > 0 ? posts.slice(0, 8) : fallbackImages;
+  const handleInstagramAuth = () => {
+    // Instagram OAuth flow
+    const clientId = 'YOUR_INSTAGRAM_APP_ID'; // This needs to be set
+    const redirectUri = encodeURIComponent(window.location.origin);
+    const scope = 'user_profile,user_media';
+    
+    const authUrl = `https://api.instagram.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
+    
+    // For now, just show an alert since we need proper Instagram app setup
+    alert('Instagram integration requires app setup. Contact developer to configure Instagram Basic Display API with your Instagram App ID and Secret.');
+  };
+
+  const displayImages = posts.length > 0 ? posts : fallbackImages.map((url, index) => ({ 
+    id: `fallback-${index}`, 
+    media_url: url, 
+    permalink: 'https://instagram.com/rorysrooftop',
+    media_type: 'IMAGE' as const
+  }));
 
   return (
     <section className="py-20 bg-background">
@@ -57,34 +109,49 @@ const InstagramSection = () => {
           <p className="text-lg text-muted-foreground">
             @rorysrooftop
           </p>
+          {error && (
+            <p className="text-sm text-muted-foreground mt-2">
+              {error}
+            </p>
+          )}
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {displayImages.map((item, index) => {
-            const isInstagramPost = typeof item === 'object';
-            const imageUrl = isInstagramPost ? item.media_url : item;
-            const link = isInstagramPost ? item.permalink : 'https://instagram.com/rorysrooftop';
-            
-            return (
-              <a
-                key={index}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="aspect-square overflow-hidden rounded-lg group cursor-pointer animate-scale-in hover:opacity-90 transition-opacity"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <img 
-                  src={imageUrl}
-                  alt={`Instagram post ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </a>
-            );
-          })}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="aspect-square bg-muted animate-pulse rounded-lg"></div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            {displayImages.slice(0, 8).map((item, index) => {
+              const isInstagramPost = typeof item === 'object' && 'media_url' in item;
+              const imageUrl = isInstagramPost ? 
+                (item.media_type === 'VIDEO' ? item.thumbnail_url || item.media_url : item.media_url) : 
+                item;
+              const link = isInstagramPost ? item.permalink : 'https://instagram.com/rorysrooftop';
+              
+              return (
+                <a
+                  key={item.id || index}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-square overflow-hidden rounded-lg group cursor-pointer animate-scale-in hover:opacity-90 transition-opacity"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <img 
+                    src={imageUrl}
+                    alt={`Instagram post ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </a>
+              );
+            })}
+          </div>
+        )}
         
-        <div className="text-center">
+        <div className="text-center space-y-4">
           <Button 
             size="lg" 
             className="bg-rosy-teal hover:bg-rosy-teal/90 text-white rounded-full px-8 py-4"
@@ -93,13 +160,18 @@ const InstagramSection = () => {
             <Instagram className="w-5 h-5 mr-2" />
             FOLLOW US
           </Button>
+          
+          {posts.length === 0 && (
+            <Button 
+              variant="outline"
+              size="sm"
+              onClick={handleInstagramAuth}
+              className="text-rosy-teal border-rosy-teal hover:bg-rosy-teal hover:text-white"
+            >
+              Connect Instagram Account
+            </Button>
+          )}
         </div>
-        
-        {error && (
-          <div className="text-center mt-4 text-sm text-muted-foreground">
-            {error}
-          </div>
-        )}
       </div>
     </section>
   );
