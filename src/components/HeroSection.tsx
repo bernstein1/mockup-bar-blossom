@@ -18,20 +18,22 @@ const HeroSection = () => {
         <div className="mb-8">
           <img 
             src="/lovable-uploads/d7fa0ba4-ec04-460a-93b4-b5f4dfbbf417.png" 
-            alt="Rosy" 
+            alt="Rory's Rooftop" 
             className="h-24 sm:h-32 md:h-40 w-auto mx-auto mb-8 drop-shadow-2xl"
           />
         </div>
         
-        <div className="bg-rosy-cream/95 text-rosy-navy p-8 sm:p-12 rounded-2xl max-w-4xl mx-auto shadow-2xl backdrop-blur-sm">
+        <div className="bg-rosy-cream/95 text-rosy-navy p-8 sm:p-12 rounded-2xl max-w-5xl mx-auto shadow-2xl backdrop-blur-sm">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
-            LESS GRINDING<br/>
-            <span className="text-rosy-teal">MORE UNWINDING</span>
+            ELEVATE YOUR<br/>
+            <span className="text-rosy-teal">EXPERIENCE</span>
           </h1>
           
-          <p className="text-lg sm:text-xl font-inter mb-8 max-w-2xl mx-auto leading-relaxed">
-            Perched above the Seaport District, Rosy's Rooftop offers premium handcrafted cocktails 
-            and an escape from the urban hustle and bustle, featuring coastal charm with skyline views.
+          <p className="text-lg sm:text-xl font-inter mb-8 max-w-4xl mx-auto leading-relaxed">
+            Elevate your experience at Rory's Rooftop, the Meatpacking District's premier rooftop bar and brunch destination, 
+            perfectly situated just steps from the High Line's 14th St entrance. Our indoor-outdoor rooftop bar features 
+            award-winning craft cocktails, local beer, and an incredible weekend brunch menu. Soak in panoramic views of 
+            cobblestone streets, Hudson River sunsets, and the iconic Whitney Museum.
           </p>
           
           <Button size="lg" className="bg-rosy-teal hover:bg-rosy-teal/90 text-white text-lg px-8 py-4 rounded-full font-semibold">
