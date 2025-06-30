@@ -53,10 +53,10 @@ const FeaturesSection = () => {
                 <h3 className="text-2xl font-playfair font-bold text-rosy-navy mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-rosy-navy/80 font-inter mb-6 leading-relaxed">
+                <p className="text-rosy-navy font-inter mb-6 leading-relaxed">
                   {feature.description}
                 </p>
-                <Button className={`${feature.buttonStyle} text-white rounded-full px-6 py-2`}>
+                <Button className={`${feature.buttonStyle} text-rosy-navy rounded-full px-6 py-2`}>
                   {feature.buttonText}
                 </Button>
               </div>
