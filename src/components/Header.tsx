@@ -50,7 +50,7 @@ const Header = () => {
             </Link>
           </nav>
 
-          <Button className="hidden md:inline-flex bg-rosy-teal hover:bg-rosy-teal/90 text-white">
+          <Button className="hidden md:inline-flex bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy">
             RESERVE A TABLE
           </Button>
 
@@ -91,7 +91,7 @@ const Header = () => {
               >
                 BLOG
               </Link>
-              <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-white w-fit">
+              <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy w-fit">
                 RESERVE A TABLE
               </Button>
             </nav>
