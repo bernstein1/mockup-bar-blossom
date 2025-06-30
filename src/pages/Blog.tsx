@@ -112,7 +112,7 @@ const Blog = () => {
                   alt={heroPost.title}
                   className="w-full h-full object-cover min-h-[400px] transition-transform duration-700 hover:scale-105"
                 />
-                <Badge className="absolute top-6 left-6 bg-rosy-pink text-white text-sm px-3 py-1">
+                  <Badge className="absolute top-6 left-6 bg-rosy-pink text-rosy-navy text-sm px-3 py-1">
                   {heroPost.category}
                 </Badge>
               </div>
@@ -140,7 +140,7 @@ const Blog = () => {
                   {heroPost.excerpt}
                 </p>
                 
-                <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-white w-fit group">
+                <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy w-fit group">
                   READ FULL STORY
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -172,7 +172,7 @@ const Blog = () => {
                     alt={post.title}
                     className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <Badge className="absolute top-4 left-4 bg-rosy-teal text-white">
+                  <Badge className="absolute top-4 left-4 bg-rosy-teal text-rosy-navy">
                     {post.category}
                   </Badge>
                 </div>
@@ -215,7 +215,7 @@ const Blog = () => {
                   key={category}
                   variant="outline"
                   size="sm"
-                  className="rounded-full border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-white"
+                  className="rounded-full border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-rosy-navy"
                 >
                   {category}
                 </Button>
@@ -236,7 +236,7 @@ const Blog = () => {
                     alt={post.title}
                     className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <Badge className="absolute top-4 left-4 bg-rosy-pink text-white text-xs">
+                  <Badge className="absolute top-4 left-4 bg-rosy-pink text-rosy-navy text-xs">
                     {post.category}
                   </Badge>
                 </div>
@@ -274,7 +274,7 @@ const Blog = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-white rounded-full px-8"
+              className="border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-rosy-navy rounded-full px-8"
             >
               LOAD MORE STORIES
             </Button>

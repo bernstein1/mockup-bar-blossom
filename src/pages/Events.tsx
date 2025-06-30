@@ -107,9 +107,9 @@ const Events = () => {
           <p className="text-xl md:text-2xl mb-8 font-light animate-fade-in" style={{ animationDelay: '0.2s' }}>
             From intimate gatherings to grand celebrations, discover what makes Rory's Rooftop the perfect venue
           </p>
-          <Button 
-            size="lg" 
-            className="bg-rosy-teal hover:bg-rosy-teal/90 text-white rounded-full px-8 py-4 animate-scale-in"
+          <Button
+            size="lg"
+            className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy rounded-full px-8 py-4 animate-scale-in"
             style={{ animationDelay: '0.4s' }}
           >
             VIEW ALL EVENTS
@@ -134,7 +134,7 @@ const Events = () => {
                   alt={featuredEvent.title}
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
-                <Badge className="absolute top-4 left-4 bg-rosy-pink text-white">
+                <Badge className="absolute top-4 left-4 bg-rosy-pink text-rosy-navy">
                   {featuredEvent.category}
                 </Badge>
               </div>
@@ -171,7 +171,7 @@ const Events = () => {
                   <span className="text-2xl font-bold text-rosy-teal">
                     {featuredEvent.price}
                   </span>
-                  <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-white">
+                  <Button className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy">
                     RESERVE NOW
                   </Button>
                 </div>
@@ -195,7 +195,7 @@ const Events = () => {
                 <Button
                   key={category}
                   variant="outline"
-                  className="rounded-full border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-white"
+                  className="rounded-full border-rosy-teal text-rosy-teal hover:bg-rosy-teal hover:text-rosy-navy"
                 >
                   {category}
                 </Button>
@@ -216,7 +216,7 @@ const Events = () => {
                     alt={event.title}
                     className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <Badge className="absolute top-4 left-4 bg-rosy-pink text-white">
+                  <Badge className="absolute top-4 left-4 bg-rosy-pink text-rosy-navy">
                     {event.category}
                   </Badge>
                   <div className="absolute top-4 right-4 bg-white/90 rounded-full p-2">
@@ -243,8 +243,8 @@ const Events = () => {
                     </div>
                   </div>
                   
-                  <Button 
-                    className="w-full mt-4 bg-rosy-teal hover:bg-rosy-teal/90 text-white"
+                  <Button
+                    className="w-full mt-4 bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy"
                     size="sm"
                   >
                     LEARN MORE
