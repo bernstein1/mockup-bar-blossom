@@ -36,7 +36,7 @@ const HeroSection = () => {
             cobblestone streets, Hudson River sunsets, and the iconic Whitney Museum.
           </p>
           
-          <Button size="lg" className="bg-rosy-teal hover:bg-rosy-teal/90 text-white text-lg px-8 py-4 rounded-full font-semibold">
+          <Button size="lg" className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy text-lg px-8 py-4 rounded-full font-semibold">
             RESERVE A TABLE
           </Button>
         </div>

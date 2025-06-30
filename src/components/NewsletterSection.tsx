@@ -46,7 +46,7 @@ const NewsletterSection = () => {
             />
             <Button 
               type="submit" 
-              className="bg-rosy-teal hover:bg-rosy-teal/90 text-white px-8 py-2 rounded-md font-semibold whitespace-nowrap"
+              className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy px-8 py-2 rounded-md font-semibold whitespace-nowrap"
             >
               SIGN UP
             </Button>

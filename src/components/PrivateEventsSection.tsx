@@ -34,7 +34,7 @@ const PrivateEventsSection = () => {
               </div>
             </div>
             
-            <Button size="lg" className="bg-rosy-teal hover:bg-rosy-teal/90 text-white rounded-full px-8 py-4">
+            <Button size="lg" className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy rounded-full px-8 py-4">
               LEARN MORE
             </Button>
           </div>
