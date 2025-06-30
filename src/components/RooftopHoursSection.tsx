@@ -47,7 +47,12 @@ const RooftopHoursSection = () => {
               <div className="absolute inset-8 bg-white/5 rounded-full flex items-center justify-center">
                 <div className="text-center text-white">
                   <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <svg
+                      className="w-8 h-8"
+                      fill="currentColor"
+                      role="presentation"
+                      viewBox="0 0 20 20"
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.5 2.5a1 1 0 001.414-1.414L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                   </div>
