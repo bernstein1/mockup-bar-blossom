@@ -28,7 +28,11 @@ const NewsletterSection = () => {
           </p>
           
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+            <label htmlFor="newsletter-name" className="sr-only">
+              Full Name
+            </label>
             <Input
+              id="newsletter-name"
               type="text"
               placeholder="Full Name"
               value={name}
@@ -36,7 +40,11 @@ const NewsletterSection = () => {
               className="flex-1 bg-white/90 border-white/20 text-rosy-navy placeholder:text-rosy-navy/60"
               required
             />
+            <label htmlFor="newsletter-email" className="sr-only">
+              Email Address
+            </label>
             <Input
+              id="newsletter-email"
               type="email"
               placeholder="Email Address"
               value={email}
@@ -44,7 +52,7 @@ const NewsletterSection = () => {
               className="flex-1 bg-white/90 border-white/20 text-rosy-navy placeholder:text-rosy-navy/60"
               required
             />
-            <Button 
+            <Button
               type="submit" 
               className="bg-rosy-teal hover:bg-rosy-teal/90 text-white px-8 py-2 rounded-md font-semibold whitespace-nowrap"
             >
