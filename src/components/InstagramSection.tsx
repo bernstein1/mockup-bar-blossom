@@ -137,6 +137,7 @@ const InstagramSection = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Opens in a new tab"
                   className="aspect-square overflow-hidden rounded-lg group cursor-pointer animate-scale-in hover:opacity-90 transition-opacity"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -152,9 +153,10 @@ const InstagramSection = () => {
         )}
         
         <div className="text-center space-y-4">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-rosy-teal hover:bg-rosy-teal/90 text-white rounded-full px-8 py-4"
+            aria-label="Opens in a new tab"
             onClick={() => window.open('https://instagram.com/rorysrooftop', '_blank')}
           >
             <Instagram className="w-5 h-5 mr-2" />
