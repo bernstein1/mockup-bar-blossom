@@ -152,9 +152,9 @@ const InstagramSection = () => {
         )}
         
         <div className="text-center space-y-4">
-          <Button 
-            size="lg" 
-            className="bg-rosy-teal hover:bg-rosy-teal/90 text-white rounded-full px-8 py-4"
+          <Button
+            size="lg"
+            className="bg-rosy-teal hover:bg-rosy-teal/90 text-rosy-navy rounded-full px-8 py-4"
             onClick={() => window.open('https://instagram.com/rorysrooftop', '_blank')}
           >
             <Instagram className="w-5 h-5 mr-2" />
@@ -166,7 +166,7 @@ const InstagramSection = () => {
               variant="outline"
               size="sm"
               onClick={handleInstagramAuth}
-              className="text-rosy-teal border-rosy-teal hover:bg-rosy-teal hover:text-white"
+              className="text-rosy-teal border-rosy-teal hover:bg-rosy-teal hover:text-rosy-navy"
             >
               Connect Instagram Account
             </Button>
